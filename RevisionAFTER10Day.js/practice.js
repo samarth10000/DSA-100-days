@@ -82,6 +82,20 @@ let arr = [2, 4, 6, 7, 9, 10, 6, 23, -2];
 //------------------------------------------------------------------
 
 // 5 - Reverse String
+// var reverseString = function (s) {
+//     let i = 0 ;
+//     let j = s.length-1;
+
+//     while (i < j ){
+
+//         let  temp = s[i];
+//         s[i] = s[j];
+//         s[j] = temp ;
+//         i++;
+//         j--;
+
+//     }
+// }
 
 //-------------------------------------------------------------------
 // 6 - Best Time to buy and sell stocks
@@ -160,5 +174,26 @@ var merge = function (nums1, m, nums2, n) {
     nums1[i] = nums2[p2];
     i++;
     p2++;
+  }
+};
+
+//------------------------------------------------Move Zeros
+
+let Num = [0, 2, 0, 4, 5, 6];
+
+var moveZeroes = function (nums) {
+  let insertPos = 0;
+
+  // First pass: move all non-zero elements forward
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      nums[insertPos] = nums[i];
+      insertPos++;
+    }
+  }
+
+  // Second pass: fill remaining positions with zero
+  for (let i = insertPos; i < nums.length; i++) {
+    nums[i] = 0;
   }
 };
