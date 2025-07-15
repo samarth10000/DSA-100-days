@@ -107,3 +107,58 @@ let arr = [2, 4, 6, 7, 9, 10, 6, 23, -2];
 
 //-------------------------------------------------------------------
 // 7 - Merge Two Sorted Array
+// Brute Force
+
+nums1 = [2, 3, 4];
+nums2 = [4, 5, 7];
+
+function MergeSortedArray(nums1, nums2) {
+  let m = nums1.length;
+  let n = nums2.length;
+
+  let nums1Copy = nums1.slice(0, m);
+  let merged = nums1Copy.concat(nums2);
+
+  merged.sort((a, b) => a - b);
+
+  for (let i = 0; i < m + n; i++) {
+    nums1[i] = merged[i];
+  }
+
+  return nums1;
+}
+
+const result = MergeSortedArray(nums1, nums2);
+console.log(result);
+
+//Better Approach
+
+var merge = function (nums1, m, nums2, n) {
+  let nums1copy = nums1.slice(0, m);
+  // we declare pointer here
+  let p1 = 0;
+  let p2 = 0;
+  let i = 0;
+  // put a condition
+  while (p1 < m && p2 < n) {
+    if (nums1copy[p1] < nums2[p2]) {
+      nums1[i] = nums1copy[p1];
+      p1++;
+    } else {
+      nums1[i] = nums2[p2];
+      p2++;
+    }
+    i++;
+  }
+
+  while (p1 < m) {
+    nums1[i] = nums1copy[p1];
+    i++;
+    p1++;
+  }
+  while (p2 < n) {
+    nums1[i] = nums2[p2];
+    i++;
+    p2++;
+  }
+};
